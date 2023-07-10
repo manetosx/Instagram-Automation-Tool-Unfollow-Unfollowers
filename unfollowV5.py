@@ -92,8 +92,6 @@ def unfollow_users(driver, unfollowers_file, daily_limit, hourly_limit, max_retr
     with open(unfollowers_file, "r") as file:
         unfollowers = file.read().splitlines()
     file.close()
-    #print(unfollowers)
-    #time.sleep(20000)
     
     # Confirm with the user before proceeding
     confirmation = input(f"Unfollowing {len(unfollowers)} users. Do you want to proceed? (y/n): ")
@@ -103,7 +101,7 @@ def unfollow_users(driver, unfollowers_file, daily_limit, hourly_limit, max_retr
 
     unfollow_count = 0  # Track the number of unfollows
     start_time = datetime.datetime.now()  # Track the start time
-    hourly_limit_duration = 3600  # 1 hour in seconds # Change this
+    hourly_limit_duration = 1800  # hour(s) in seconds # Change this
 
     for username in unfollowers:
         if unfollow_count >= daily_limit:
@@ -173,8 +171,8 @@ def main():
     
     # Provide limits and call function
     
-    daily_limit = 84 # Change this
-    hourly_limit = 42 # Change this
+    daily_limit = 120 # Change this
+    hourly_limit = 30 # Change this
     
     unfollow_users(driver, unfollowers_file, daily_limit, hourly_limit)
     print("Unfollow process complete. Script will now Exit.")
